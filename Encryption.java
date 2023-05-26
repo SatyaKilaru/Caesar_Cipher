@@ -1,15 +1,15 @@
-import java.io.*;
-import java.util.*;
-public class Solution { 
-  public static final String alpha = "abcdefghijklmnopqrstuvwxyz";
+import java.util.Scanner;
+
+public class Solution {
+  public static final String ALPHA = "abcdefghijklmnopqrstuvwxyz";
 
   public static String encrypt(String message, int shiftKey) {
     message = message.toLowerCase();
     String cipherText = "";
     for (int ii = 0; ii < message.length(); ii++) {
-      int charPosition = aplha.indexOf(message.charAt(ii));
+      int charPosition = ALPHA.indexOf(message.charAt(ii));
       int keyVal = (shiftKey + charPosition) % 26;
-      char replaceVal = aplha.charAt(keyVal);
+      char replaceVal = ALPHA.charAt(keyVal);
       cipherText += replaceVal;
     }
     return cipherText;
@@ -17,13 +17,13 @@ public class Solution {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    String message = new String();
+    String message = "";
     int key = 0;
     System.out.print("Enter the String for Encryption:");
-    message = sc.next();
+    message = sc.nextLine();
 
     System.out.println("\n\nEnter Shift Key:");
     key = sc.nextInt();
-    System.out.println("\nEncrpyted msg:" + encrypt(message, key));
+    System.out.println("\nEncrypted message: " + encrypt(message, key));
   }
-} 
+}
